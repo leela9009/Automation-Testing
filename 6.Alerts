@@ -1,0 +1,85 @@
+#Alert box
+
+import java.time.Duration;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class leela5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.selenium.dev/documentation/webdriver/interactions/alerts/");
+		driver.findElement(By.linkText("See an example alert")).click();
+		WebDriverWait wait=new 
+		WebDriverWait(driver,Duration.ofSeconds(15));
+		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+		String text = alert.getText();
+		alert.accept();
+	}
+
+}
+
+
+# Confirm box
+
+package windowoperations;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.Alert;
+public class leela6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+		 driver.get("https://demo.guru99.com/test/delete_customer.php");
+		 driver.findElement(By.name("cusid")).sendKeys("53920");
+		 driver.findElement(By.name("submit")).submit();
+		 Alert alert = driver.switchTo().alert();
+		 String alertMessage= driver.switchTo().alert().getText();
+		 System.out.println(alertMessage);
+		 alert.accept();
+	}
+
+}
+
+
+#Prompt box
+
+package windowoperations;
+import org.openqa.selenium.Alert; 
+import org.openqa.selenium.By; 
+import org.openqa.selenium.WebDriver; 
+import org.openqa.selenium.WebElement; 
+import org.openqa.selenium.chrome.ChromeDriver; 
+public class leela7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			 WebDriver driver = new ChromeDriver(); 
+			 String URL = "https://selenium08.blogspot.com/2019/07/alert-test.html"; 
+			 driver.get(URL); 
+			 driver.manage().window().maximize(); 
+			 WebElement element = driver.findElement(By.xpath("//button[@id='prompt']")); 
+			 element.click(); 
+			 Alert alert = driver.switchTo().alert(); 
+			 alert.sendKeys("Deep"); 
+			 alert.accept();
+			 WebElement displayMessage = driver.findElement(By.id("prompt_demo")); 
+			 String getText = displayMessage.getText(); 
+			 System.out.println(getText); 
+			 if(getText.equalsIgnoreCase("Hello Deep! How are you today?"))
+			 { 
+			 System.out.println("Exact matched"); 
+			 }
+			 else { 
+			 System.out.println("Something went wrong"); 
+			 } 
+			 driver.close(); 
+	}
+
+}
