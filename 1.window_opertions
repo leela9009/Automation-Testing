@@ -10,7 +10,7 @@ public class leela {
 		driver.get("http://www.naukri.com/");
 		driver.manage().window().maximize();
 		driver.manage().window().minimize();
-		System.out.println("Title: "+driver.getTitle());7
+		System.out.println("Title: "+driver.getTitle());
 	}
 
 }
